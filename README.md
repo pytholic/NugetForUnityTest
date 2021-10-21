@@ -24,9 +24,14 @@ Now for the case of most of the libraries, you just need to install through NuGe
 
 1) After you have installed the **Microsoft.Onnx.Runtime** package, head over to **Assets -> Packages -> Microsoft.ML.OnnxRuntime.1.9.0** folder on your local explorer. Note that your folder name can be different depending on the version you are using. Locate `Microsoft.ML.OnnxRuntime.1.9.0.nupkg` inside the folder.
 2) This step will be different depending on your OS.
-  * If you are using **Windows**, rename the `Microsoft.ML.OnnxRuntime.1.9.0.nupkg` file to `Microsoft.ML.OnnxRuntime.1.9.0.zip` and extract it. Go to **runtimes -> win-x64 -> native** and copy all the `.dll` files. Note that you have to choose the right OS depending on your system. I am using win-x64 based system so I chose that.
-  * If you are using **linux-based** system (Ubuntu in my case)
+  * If you are using **Windows**, rename the `Microsoft.ML.OnnxRuntime.1.9.0.nupkg` file to `Microsoft.ML.OnnxRuntime.1.9.0.zip` and extract it. Go to **runtimes -> win-x64 -> native** and copy all the `.dll` files (*onnxruntime.dll* and *onnxruntime_providers_shared.dll*). Note that you have to choose the right OS depending on your system. I am using win-x64 based system so I chose that.
+  * If you are using **linux-based** system (Ubuntu in my case), extract the `Microsoft.ML.OnnxRuntime.1.9.0.nupkg` file. Go to **runtimes -> linux-x64 -> native** and copy the `.so` file (*libonnxruntime.so*)
+3) Now create a new folder named `Plugins` inside your `Assets` and paste those files inside it.
 
+That is it. now you should be able to use the packages.
 
 ## Cleanup
+After copying the `.dll` and `.so` files, you can delete the rest of the extracted files and folder, since you don't need them. Also, you can go to your Unity project, open NuGet Package Manager, and uninstall **Microsoft.ML.OnnxRuntime** from it if you want. Don't worry, it is not going to affect your project.
+
 ## Final Comments
+`NugetForUnity` is pretty handy since it is very easy to install the packages with it and it also takes care of the required dependencies. However, the support is limited for native libraries at the moment since we have to perform some manual steps. Still, it can install the required dependencies even for the native libraries which is useful. Hopefully, in the future, we will have more packages a\valable along with more support for native libraries.
